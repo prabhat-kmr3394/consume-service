@@ -10,19 +10,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AppComponent implements OnInit{
   title = 'consume-service';
   data:any;
+  inputText = '';
   constructor(private dataService: DataService) {
   }
-  ngOnInit() {
-    //this.loadAllArticles();
-    this.saveData();
-  }
+  ngOnInit() {}
 
-  saveData() {
+  public saveData(inputText: any) {
     
     this.dataService.postData().subscribe(res => { 
          this.data = res.body;
-         console.log(this.data.status);
-         console.log(res.body);
+         console.log(inputText);
+         this.data.Userdata = inputText;
+         console.log(this.data);
          console.log(res.headers.get('Content-Type'));		
         	  
        },
