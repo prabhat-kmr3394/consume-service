@@ -15,9 +15,6 @@ export class DataService {
   postData({ inputText, inputService }: { inputText: string; inputService: string; }) {
 
     this.url = this.url + inputService;
-    console.log(inputText);
-    console.log(this.url);
-    console.log(this.data);
       let httpHeaders = new HttpHeaders({
            'Content-Type' : 'application/json'
       });    
