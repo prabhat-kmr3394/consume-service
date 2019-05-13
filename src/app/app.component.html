@@ -7,5 +7,7 @@
 </div>
 <h2>User Request Data: </h2>
 <input type="text" name="inputText" [(ngModel)]="inputText">
-<input type="submit" value="Submit" (click)="saveData(inputText)">
+<h2>Service Name: </h2>
+<input type="text" name="inputService" [(ngModel)]="inputService">
+<input type="submit" value="Submit" (click)="saveData()">
 <router-outlet></router-outlet>

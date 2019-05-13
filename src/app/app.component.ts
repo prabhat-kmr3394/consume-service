@@ -9,21 +9,19 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class AppComponent implements OnInit{
   title = 'consume-service';
-  data:any;
-  inputText = '';
+  data:any;inputText:string;inputService:string;
   constructor(private dataService: DataService) {
   }
   ngOnInit() {}
 
-  public saveData(inputText: any) {
+  public saveData() {
     
-    this.dataService.postData().subscribe(res => { 
+    this.dataService.postData({ inputText: this.inputText, inputService: this.inputService }).subscribe(res => { 
          this.data = res.body;
-         console.log(inputText);
-         this.data.Userdata = inputText;
+         this.data.Userdata = this.inputText;
          console.log(this.data);
          console.log(res.headers.get('Content-Type'));		
-        	  
+         this.dataService.url = "https://staging.denave.com:8443/ExxonMobil/V1/"; 	  
        },
  (err: HttpErrorResponse) => {
          if (err.error instanceof Error) {

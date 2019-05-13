@@ -7,13 +7,15 @@ import { Observable } from 'rxjs/Observable';
 })
 export class DataService {
 
-  url = "http://172.16.15.56:8080/ExxonMobil/V1/state";
+  url = "https://staging.denave.com:8443/ExxonMobil/V1/";
   data = { userId : 'test_tmr', userToken : '1991e133232401deTEST', deviceId : '1991e133232401de', campId : '1', responseToken : '38F373F7153C9606ECCFD8362C687250'};   
 
   constructor(private http: HttpClient) { }
  
-  postData() {
+  postData({ inputText, inputService }: { inputText: string; inputService: string; }) {
 
+    this.url = this.url + inputService;
+    console.log(inputText);
     console.log(this.url);
     console.log(this.data);
       let httpHeaders = new HttpHeaders({
@@ -24,7 +26,7 @@ export class DataService {
             headers: httpHeaders,
             observe: 'response'
           }
-      );
+      );   
   }    
      
 }
